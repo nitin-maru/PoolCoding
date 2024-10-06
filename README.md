@@ -56,9 +56,10 @@ High-Level Architecture Diagram
 │   │   │   │       ├── ApiServer.kt
 │   │   │   │       ├── BlockSyncer.kt
 │   ├── resources
-│   │   └── application.conf
+│   │   └── application.properties
 ├── build.gradle
 └── README.md
+└── .env
 ```
 
 ##  Project Flow:
