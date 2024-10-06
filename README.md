@@ -1,6 +1,39 @@
 # Bitcoin OP_RETURN Data Indexing Project
 
-This project indexes OP_RETURN data from Bitcoin's signet blockchain and exposes it through a REST API. The project uses Kotlin and Ktor to create the API and PostgreSQL to store the OP_RETURN data.
+This project indexes OP_RETURN data from Bitcoin's signet blockchain and exposes it through a REST API. The project uses Kotlin and Ktor to create the API and PostgreSQL to store the OP_RETURN data.The app also ensures that new blocks are synced and indexed automatically.
+
+
+##  Key Features:
+
+	1.	OP_RETURN Data Indexing: Extract OP_RETURN data from Bitcoin Signet blockchain transactions and store them in PostgreSQL.
+	2.	REST API: Serve the indexed data via an HTTP endpoint /opreturn/{opReturnData}, which returns the associated transaction and block hashes.
+	3.	Automatic Block Syncing: Sync and index new blocks automatically as they are mined on the Signet network.
+
+## Architecture Overview
+
+High-Level Architecture Diagram
+
++-------------------+          +----------------+         +-----------------+
+|                   |          |                |         |                 |
+|   Bitcoin Core    |  <-----> |   REST API      |  <----->|  PostgreSQL DB  |
+|                   |          |   (Ktor + Kotlin)|         |                 |
++-------------------+          +----------------+         +-----------------+
+   |                                                       |
+   v                                                       v
++-----------------------------------+          +------------------------------------+
+| OP_RETURN data extracted from     |          |   Data stored in `op_return_index` |
+| Signet blockchain transactions    |          |   table with transaction, block,  |
+| and served via REST API           |          |   and OP_RETURN data              |
++-----------------------------------+          +------------------------------------+
+
+
+## Components:
+
+	1.	Bitcoin Core: Connects to the Bitcoin Signet network, providing blockchain data via RPC.
+	2.	Ktor API Server: A Kotlin-based REST API built with Ktor, serving OP_RETURN data.
+	3.	PostgreSQL: Stores the indexed OP_RETURN data and keeps track of the latest synced block.
+	4.	HikariCP Connection Pool: Manages database connections efficiently.
+
 
 ## Project Structure
 
