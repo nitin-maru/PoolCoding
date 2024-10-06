@@ -13,6 +13,7 @@ This project indexes OP_RETURN data from Bitcoin's signet blockchain and exposes
 
 High-Level Architecture Diagram
 
+```
 +-------------------+          +----------------+         +-----------------+
 |                   |          |                |         |                 |
 |   Bitcoin Core    |  <-----> |   REST API      |  <----->|  PostgreSQL DB  |
@@ -25,6 +26,7 @@ High-Level Architecture Diagram
 | Signet blockchain transactions    |          |   table with transaction, block,  |
 | and served via REST API           |          |   and OP_RETURN data              |
 +-----------------------------------+          +------------------------------------+
+```
 
 
 ## Components:
